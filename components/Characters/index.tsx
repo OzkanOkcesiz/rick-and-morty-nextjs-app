@@ -1,42 +1,27 @@
 import Head from 'next/head'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import React from 'react'
 import Card from '../Card'
+import Footer from '../Footer'
+import Header from '../Header'
 
 const Characters = ({ characters }: any) => {
-  const router = useRouter()
-  const page = Number(router.query.page) || 1
+ 
 
   return (
-    <div>
+    <div className='bg-cyan-950'>
       <Head>
-        <title>Morty GraphQL | Next.js</title>
+        <title>Rick and Morty GraphQL | Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header />
       <main>
-        <div className="title">
-          <span>Next/GraphQL </span>Rick and Morty Character App
-        </div>
-        <div className="row">
+        <div className="grid grid-cols-5 justify-items-center">
           {characters?.results.map((character: any) => (
             <Card character={character} key={character.id} />
           ))}
         </div>
       </main>
-
-      <footer>
-        {page > 1 && (
-          <Link href={`/${page - 1}`} passHref>
-            <button>Previous Page</button>
-          </Link>
-        )}
-
-        <Link href={`/${page + 1}`} passHref>
-          <button>Next Page</button>
-        </Link>
-      </footer>
+      <Footer />
     </div>
   )
 }

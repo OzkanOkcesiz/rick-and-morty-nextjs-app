@@ -7,29 +7,48 @@ const Page = ({characters}: any) => {
   return <Characters characters={characters} />
 }
 
-
-export const getStaticPaths = async () => {
-    const { data } = await client.query({ query: GET_PAGE_INFO })
+// ES2015 öncesi için
+// export const getStaticPaths = async () => {
+//     const { data } = await client.query({ query: GET_PAGE_INFO })
     
-    function* generatePages(numberOfPages: number): IterableIterator<number> {
-        let page = 0;
-        while (page < numberOfPages) {
-          yield page++;
-        }
-      }
+//     function* generatePages(numberOfPages: number): IterableIterator<number> {
+//         let page = 0;
+//         while (page < numberOfPages) {
+//           yield page++;
+//         }
+//       }
       
-      const numberOfPages = data?.characters.info.pages + 1;
+//       const numberOfPages = data?.characters.info.pages + 1;
       
-      const paths = Array.from(generatePages(numberOfPages)).map((page) => ({
-        params: { page: `${page}` },
-      }));
+//       const paths = Array.from(generatePages(numberOfPages)).map((page) => ({
+//         params: { page: `${page}` },
+//       }));
 
   
-    return {
-      paths,
-      fallback: false,
-    }
+//     return {
+//       paths,
+//       fallback: false,
+//     }
+//   }
+
+
+export const getStaticPaths = async () => {
+  const { data } = await client.query({ query: GET_PAGE_INFO })
+  
+  const numberOfPages = data?.characters.info.pages + 1;
+
+  const arrayOfPages = [...Array(numberOfPages).keys()];
+  
+  const paths = arrayOfPages.map((page) => ({
+    params: { page: `${page}` },
+  }));
+
+
+  return {
+    paths,
+    fallback: false,
   }
+}
 
   export const getStaticProps = async ({ params: { page } } : { params: { page: string } }) => {
     const { data } = await client.query({
