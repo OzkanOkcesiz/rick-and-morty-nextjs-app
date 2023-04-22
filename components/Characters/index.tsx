@@ -8,14 +8,14 @@ const Characters = ({ characters }: any) => {
  
 
   return (
-    <div className='bg-cyan-950'>
+    <div className='container mx-auto px-4'>
       <Head>
         <title>Rick and Morty GraphQL | Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <main>
-        <div className="grid grid-cols-5 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
           {characters?.results.map((character: any) => (
             <Card character={character} key={character.id} />
           ))}

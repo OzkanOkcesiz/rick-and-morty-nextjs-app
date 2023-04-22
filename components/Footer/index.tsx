@@ -8,15 +8,15 @@ const Footer = () => {
 
 
     return (
-        <footer>
+        <footer className='text-center'>
             {page > 1 && (
                 <Link href={`/${page - 1}`} passHref>
-                    <button className='text-cyan-100'>Previous Page</button>
+                    <button className='text-cyan-100 m-2'>Previous Page</button>
                 </Link>
             )}
 
             <Link href={`/${page + 1}`} passHref>
-                <button className='text-cyan-100'>Next Page</button>
+                <button className='text-cyan-100 m-2'>Next Page</button>
             </Link>
         </footer>
     )
