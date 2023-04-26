@@ -9,9 +9,23 @@ const GET_CHARACTERS: any = gql`
             gender
             status
             image
+            created
+            species
           }
         }
       }
+`
+
+const SEARCH_CHARACTERS = gql`
+  query SearchCharacters($query: String!) {
+    characters(filter: { name: $query }) {
+      results {
+        id
+        name
+        image
+      }
+    }
+  }
 `
 
 const GET_PAGE_INFO = gql`
@@ -24,4 +38,4 @@ const GET_PAGE_INFO = gql`
     }
 `
 
-export { GET_CHARACTERS, GET_PAGE_INFO }
+export { GET_CHARACTERS, GET_PAGE_INFO, SEARCH_CHARACTERS }

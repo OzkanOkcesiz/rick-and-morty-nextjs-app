@@ -3,6 +3,7 @@ import React from 'react'
 import Card from '../Card'
 import Footer from '../Footer'
 import Header from '../Header'
+import Search from '../Search'
 
 const Characters = ({ characters }: any) => {
  
@@ -14,6 +15,7 @@ const Characters = ({ characters }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <Search />
       <main>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
           {characters?.results.map((character: any) => (
