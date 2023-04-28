@@ -8,7 +8,6 @@ export default function Home({ characters }: any) {
 }
 
 
-
 export const getServerSideProps = async () => {
   const { data } = await client.query({ query: GET_CHARACTERS })
 

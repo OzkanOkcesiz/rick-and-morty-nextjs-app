@@ -11,12 +11,22 @@ const Footer = () => {
     return (
         <footer className='text-center'>
             {page > 1 && (
-                <Link href={`/${page -1}${filter!== undefined ? `filterName=${filter}`: ""}`} passHref>
+                <Link href={{
+                    pathname: `/${page-1}`,
+                    query:{
+                        filterName:filter
+                    }
+                }} passHref>
                     <button className='text-cyan-100 m-2'>Previous Page</button>
                 </Link>
             )}
 
-            <Link href={`/${page +1}${filter!== undefined ? `filterName=${filter}`: ""}`} passHref>
+            <Link href={{
+                    pathname: `/${page+1}`,
+                    query:{
+                        filterName:filter
+                    }
+                }} passHref>
                 <button className='text-cyan-100 m-2'>Next Page</button>
             </Link>
         </footer>
