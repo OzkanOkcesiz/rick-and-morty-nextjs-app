@@ -6,7 +6,7 @@ import Header from '../Header'
 import Search from '../Search'
 
 const Characters = ({ characters }: any) => {
- 
+  console.log(characters);
 
   return (
     <div className='container mx-auto px-4'>
@@ -17,13 +17,19 @@ const Characters = ({ characters }: any) => {
       <Header />
       <Search />
       <main>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
-          {characters?.results.map((character: any) => (
-            <Card character={character} key={character.id} />
-          ))}
-        </div>
+        {
+          characters.length === 0 ? <div className='text-cyan-100 text-xl text-center'>
+            Not found
+          </div> :
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
+              {characters?.map((character: any) => (
+                <Card character={character} key={character.id} />
+              ))}
+            </div>
+        }
+
       </main>
-      <Footer />
+      {characters.length !== 0 && <Footer />}
     </div>
   )
 }

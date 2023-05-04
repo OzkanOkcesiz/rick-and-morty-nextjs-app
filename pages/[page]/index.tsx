@@ -25,7 +25,7 @@ export async function getServerSideProps(context: { query: any }) {
 
   return {
     props: {
-      characters: data?.characters,
+      characters: data?.characters.results,
     },
   }
 }

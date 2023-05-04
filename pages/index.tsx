@@ -13,7 +13,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      characters: data?.characters,
+      characters: data?.characters.results,
     },
   }
 }
