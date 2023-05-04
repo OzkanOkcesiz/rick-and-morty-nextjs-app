@@ -6,7 +6,6 @@ import Header from '../Header'
 import Search from '../Search'
 
 const Characters = ({ characters }: any) => {
-  console.log(characters);
 
   return (
     <div className='container mx-auto px-4'>
