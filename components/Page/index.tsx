@@ -9,7 +9,7 @@ const Page = () => {
 
 
     return (
-        <div className='text-center'>
+        <div className='text-center mb-4'>
             {page > 1 && (
                 <Link href={filter ? {
                     pathname: `/${page - 1}`,
